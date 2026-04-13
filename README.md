@@ -1,84 +1,151 @@
-# 🧠 Predição de Hipertireoidismo com Machine Learning
+# 🧠 Hyperthyroidism Prediction with Machine Learning
 
-## 📌 Sobre o Projeto
-Este projeto tem como objetivo analisar dados clínicos e desenvolver um modelo preditivo capaz de identificar casos de **hipertireoidismo**, utilizando técnicas de **Ciência de Dados e Machine Learning**.
-
-A proposta é simular um cenário real da área da saúde, aplicando desde o tratamento dos dados até a construção e avaliação de modelos preditivos.
+> A clinical data analysis project that uses Machine Learning to predict hyperthyroidism, supporting early diagnosis in healthcare settings.
 
 ---
 
-## 🎯 Objetivos
-- Realizar análise exploratória dos dados (EDA)
-- Tratar dados categóricos e valores ausentes
-- Aplicar técnicas de pré-processamento
-- Construir modelos de classificação
-- Avaliar o desempenho dos modelos
+## 📌 Project Overview
+
+This project simulates a real-world healthcare data science scenario. Using a clinical dataset with patient information, I built and evaluated predictive classification models capable of identifying hyperthyroidism cases based on lab results and medical indicators.
+
+The goal was to apply the full data science pipeline — from raw data to a validated model — in a context where early detection has real clinical impact.
+
+---
+
+## 🎯 Objectives
+
+- Perform in-depth Exploratory Data Analysis (EDA) on clinical data
+- Handle missing values and categorical variables appropriately
+- Apply preprocessing and feature engineering techniques
+- Build and compare classification models
+- Evaluate model performance with relevant healthcare metrics
 
 ---
 
 ## 🗂️ Dataset
-O conjunto de dados contém informações clínicas de pacientes, incluindo:
-- Idade
-- Sexo
-- Exames laboratoriais
-- Indicadores médicos
+
+The dataset contains patient clinical records, including:
+
+| Feature | Description |
+|---|---|
+| Age | Patient age |
+| Sex | Biological sex |
+| Lab results | Hormone levels (TSH, T3, T4, etc.) |
+| Medical indicators | Clinical flags and binary diagnostic markers |
+
+> Source: UCI Machine Learning Repository — Thyroid Disease Dataset
 
 ---
 
-## ⚙️ Tecnologias Utilizadas
-- Python 🐍
-- Pandas
-- NumPy
-- Scikit-learn
-- Matplotlib / Seaborn
-- Jupyter Notebook
+## ⚙️ Tech Stack
+
+![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white)
+![Pandas](https://img.shields.io/badge/Pandas-150458?style=for-the-badge&logo=pandas&logoColor=white)
+![NumPy](https://img.shields.io/badge/NumPy-013243?style=for-the-badge&logo=numpy&logoColor=white)
+![Scikit-learn](https://img.shields.io/badge/Scikit--learn-F7931E?style=for-the-badge&logo=scikitlearn&logoColor=white)
+![Matplotlib](https://img.shields.io/badge/Matplotlib-11557c?style=for-the-badge)
+![Seaborn](https://img.shields.io/badge/Seaborn-4c9be8?style=for-the-badge)
+![Jupyter](https://img.shields.io/badge/Jupyter-F37626?style=for-the-badge&logo=jupyter&logoColor=white)
 
 ---
 
-## 🔎 Etapas do Projeto
+## 🔎 Project Pipeline
 
-### 1. Análise Exploratória (EDA)
-- Identificação de padrões
-- Distribuição das variáveis
-- Correlação entre features
+### 1. Exploratory Data Analysis (EDA)
+- Distribution analysis for numerical and categorical features
+- Class imbalance detection
+- Correlation heatmap between clinical variables
+- Identification of the most predictive features
 
-### 2. Pré-processamento
-- Tratamento de valores nulos
-- Encoding de variáveis categóricas
-- Padronização dos dados
+### 2. Preprocessing
+- Missing value imputation
+- Label encoding for categorical variables
+- Feature standardization with `StandardScaler`
+- Train/test split with stratification to preserve class balance
 
-### 3. Modelagem
-- Modelos de classificação aplicados
-- Treino e teste dos dados
+### 3. Modeling
+Multiple classification algorithms were tested and compared:
+- Logistic Regression (baseline)
+- Decision Tree
+- **Random Forest** ← selected model
+- K-Nearest Neighbors
 
-### 4. Avaliação
-- Acurácia
-- Precisão
-- Recall
-- F1-score
+### 4. Evaluation
+
+The final model was assessed using classification metrics appropriate for healthcare use cases, where false negatives are costly:
+
+| Metric | Score |
+|---|---|
+| Accuracy | ~99.4% |
+| Precision | ~98.6% |
+| Recall | ~99.6% |
+| F1-Score | ~99.1% |
+
+> The **Random Forest** classifier was selected as the final model due to its superior performance on recall and F1-score — critical metrics when the cost of missing a positive case is high.
 
 ---
 
-## 📊 Resultados - Modelo escolhido: Random Forest
-O modelo apresentou bom desempenho na classificação, sendo capaz de identificar padrões relevantes nos dados clínicos.
+## 📊 Results
 
-<img width="564" height="226" alt="image" src="https://github.com/user-attachments/assets/5e3bb19e-cf4d-4af0-b07c-ed142c36a60d" />
+The Random Forest model demonstrated outstanding performance on the test set:
 
+- **484** true positives and **42** true negatives
+- Only **1** false negative and **2** false positives
+- Near-perfect recall — critical in a medical screening context where missing a diagnosis is the costliest error
 
+![Confusion Matrix](images/model_results.png)
 
 ---
 
-## 🚀 Como Executar o Projeto
+## 🚀 How to Run
 
 ```bash
-# Clone o repositório
+# Clone the repository
 git clone https://github.com/hGALANTp/Project_hypothyroid.git
 
-# Acesse a pasta
+# Navigate to the project folder
 cd Project_hypothyroid
 
-# Instale as dependências
+# Install dependencies
 pip install -r requirements.txt
 
-# Execute o notebook
+# Launch the notebook
 jupyter notebook
+```
+
+---
+
+## 📁 Project Structure
+
+```
+Project_hypothyroid/
+│
+├── Data/                        # Raw and processed datasets
+├── Analise_Hipertiroidismo.ipynb  # Main analysis notebook
+├── requirements.txt             # Python dependencies
+└── README.md                    # Project documentation
+```
+
+---
+
+## 💡 Key Learnings
+
+- Clinical datasets often have significant class imbalance — handling it correctly is critical for model reliability
+- Recall matters more than accuracy in medical screening: a missed diagnosis is more harmful than a false alarm
+- Feature selection based on domain knowledge (endocrinology) improved model interpretability
+
+---
+
+## 👤 Author
+
+**Helton Galant**
+Data Scientist | Python · Machine Learning · Finance Background
+
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/helton-galant)
+[![GitHub](https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/hGALANTp)
+
+---
+
+## 📄 License
+
+This project is open source and available under the [MIT License](LICENSE).
