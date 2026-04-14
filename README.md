@@ -93,7 +93,7 @@ The Random Forest model demonstrated outstanding performance on the test set:
 - Only **1** false negative and **2** false positives
 - Near-perfect recall — critical in a medical screening context where missing a diagnosis is the costliest error
 
-![Confusion Matrix](images/model_results.png)
+![Confusion Matrix](Data/images/output.png)
 
 ---
 
